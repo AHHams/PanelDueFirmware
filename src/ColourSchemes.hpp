@@ -10,17 +10,17 @@
 
 #include "Hardware/UTFT.hpp"
 
-const size_t MaxColourSchemes = 5;				// the maximum number supported by firmware
-
 // Some common colours
 const Colour
 	white = 0xFFFF,
 	black = 0x0000,
+	grey = UTFT::fromRGB(128, 128, 128),
 	red = UTFT::fromRGB(255,0,0),
 	lightRed =  UTFT::fromRGB(255, 128, 128),
 	darkRed = UTFT::fromRGB(128, 0, 0),
 	yellow = UTFT::fromRGB(128,128,0),
 	lightYellow = UTFT::fromRGB(255, 255, 128),
+	darkYellow = UTFT::fromRGB(64, 64, 0),
 	lightOrange = UTFT::fromRGB(255, 224, 192),
 	darkOrange = UTFT::fromRGB(128, 64, 0),
 	green = UTFT::fromRGB(0,255,0),
@@ -36,7 +36,8 @@ const Colour
 // Definition of a colour scheme
 struct ColourScheme
 {
-	const char *name;
+	size_t index;
+
 	Colour titleBarTextColour;
 	Colour titleBarBackColour;
 	Colour labelTextColour;
@@ -62,7 +63,8 @@ struct ColourScheme
 
 	Colour buttonTextColour;
 	Colour buttonPressedTextColour;
-	Colour buttonBackColour;
+	Colour buttonTextBackColour;
+	Colour buttonImageBackColour;
 	Colour buttonGradColour;
 	Colour buttonPressedBackColour;
 	Colour buttonPressedGradColour;
@@ -75,9 +77,11 @@ struct ColourScheme
 
 	Colour progressBarColour;
 	Colour progressBarBackColour;
+
+	Colour stopButtonTextColour;
+	Colour stopButtonBackColour;
 };
 
-extern const size_t NumColourSchemes;
 extern const ColourScheme colourSchemes[];
 
 #endif /* COLOURSCHEME_H_ */

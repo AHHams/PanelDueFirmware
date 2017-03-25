@@ -8,14 +8,14 @@
 #ifndef OEM_COLOURS
 
 #include "ColourSchemes.hpp"
-
-const size_t NumColourSchemes = 2;
+#include "UserInterfaceConstants.hpp"
 
 const ColourScheme colourSchemes[NumColourSchemes] =
 {
 	// Light colour schema. As this one comes first, it is the default.
 	{
-		.name = "Light",
+		.index = 0,
+
 		.titleBarTextColour = white,
 		.titleBarBackColour = red,
 		.labelTextColour = black,
@@ -41,7 +41,8 @@ const ColourScheme colourSchemes[NumColourSchemes] =
 
 		.buttonTextColour = black,
 		.buttonPressedTextColour = black,
-		.buttonBackColour = white,
+		.buttonTextBackColour = white,
+		.buttonImageBackColour = white,
 		.buttonGradColour = UTFT::fromRGB(255-8-1, 255-4-1, 255-8),
 		.buttonPressedBackColour = lightGreen,
 		.buttonPressedGradColour = UTFT::fromRGB(255-8-1, 255-8-1, 255-8),
@@ -53,13 +54,17 @@ const ColourScheme colourSchemes[NumColourSchemes] =
 		.resetButtonBackColour = lightRed,
 
 		.progressBarColour = midGreen,
-		.progressBarBackColour = white
+		.progressBarBackColour = white,
+
+		.stopButtonTextColour = white,
+		.stopButtonBackColour = UTFT::fromRGB(255, 32, 32)			// need enough G and B to allow for the gradient
 	},
 	
 	// Dark colour scheme
 
 	{
-		.name = "Dark",
+		.index = 1,
+
 		.titleBarTextColour = white,
 		.titleBarBackColour = darkRed,
 		.labelTextColour = white,
@@ -85,23 +90,25 @@ const ColourScheme colourSchemes[NumColourSchemes] =
 
 		.buttonTextColour = white,
 		.buttonPressedTextColour = white,
-		.buttonBackColour = black,
-		.buttonGradColour = UTFT::fromRGB(8, 4, 8),
+		.buttonTextBackColour = black,
+		.buttonImageBackColour = grey,
+		.buttonGradColour = 0,	//UTFT::fromRGB(8, 4, 8),
 		.buttonPressedBackColour = darkGreen,
-		.buttonPressedGradColour = UTFT::fromRGB(8, 8, 8),
+		.buttonPressedGradColour = 0,	//UTFT::fromRGB(8, 8, 8),
 		.buttonBorderColour = white,
-		.homedButtonBackColour = darkBlue,
+		.homedButtonBackColour = blue,
 		.notHomedButtonBackColour = darkOrange,
-		.pauseButtonBackColour = lightOrange,
-		.resumeButtonBackColour = lightYellow,
-		.resetButtonBackColour = lightRed,
+		.pauseButtonBackColour = darkOrange,
+		.resumeButtonBackColour = darkYellow,
+		.resetButtonBackColour = darkRed,
 
 		.progressBarColour = midGreen,
-		.progressBarBackColour = black
+		.progressBarBackColour = black,
+
+		.stopButtonTextColour = white,
+		.stopButtonBackColour = red
 	}
 };
-
-static_assert(NumColourSchemes <= MaxColourSchemes, "Too many colour schemes");
 
 #endif
 
